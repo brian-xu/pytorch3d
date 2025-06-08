@@ -631,7 +631,7 @@ class GenericFrameDataBuilder(FrameDataBuilderBase[FrameDataSubtype], ABC):
     ) -> Tuple[torch.Tensor, str]:
         assert self.dataset_root is not None and entry.image is not None
         path = os.path.join(self.dataset_root, entry.image.path)
-        image_rgb = load_image(self._local_path(path))
+        image_rgb = torch.from_numpy(load_image(self._local_path(path)))
 
         if image_rgb.shape[-2:] != entry.image.size:
             raise ValueError(
