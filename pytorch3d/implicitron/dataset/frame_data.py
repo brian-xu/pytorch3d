@@ -365,7 +365,7 @@ class FrameData(Mapping[str, Any]):
                 mode="nearest",
             )
 
-        if self.camera is not None:
+        if self.camera is not None and self.camera is PerspectiveCameras:
             if self.image_size_hw is None:
                 raise ValueError(
                     "image_size_hw has to be defined for resizing FrameData with cameras."
